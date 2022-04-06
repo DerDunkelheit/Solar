@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{C78074F7-18FD-4BB7-B849-2E1C3556885F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Solar", "Solar\Solar.vcxproj", "{5A989ADB-7ACA-4C10-B3EE-46703642ED56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A989ADB-7ACA-4C10-B3EE-46703642ED56}.Debug|x64.ActiveCfg = Debug|x64
+		{5A989ADB-7ACA-4C10-B3EE-46703642ED56}.Debug|x64.Build.0 = Debug|x64
+		{5A989ADB-7ACA-4C10-B3EE-46703642ED56}.Release|x64.ActiveCfg = Release|x64
+		{5A989ADB-7ACA-4C10-B3EE-46703642ED56}.Release|x64.Build.0 = Release|x64
+		{C78074F7-18FD-4BB7-B849-2E1C3556885F}.Debug|x64.ActiveCfg = Debug|x64
+		{C78074F7-18FD-4BB7-B849-2E1C3556885F}.Debug|x64.Build.0 = Debug|x64
+		{C78074F7-18FD-4BB7-B849-2E1C3556885F}.Release|x64.ActiveCfg = Release|x64
+		{C78074F7-18FD-4BB7-B849-2E1C3556885F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C076060B-103A-473C-99A4-5EA8EC7BFC59}
+	EndGlobalSection
+EndGlobal
