@@ -9,6 +9,7 @@ namespace Solar
 
     void Log::Init()
     {
+        //TODO: get pattern from a file?? in order to remove recompilation
         spdlog::set_pattern("%^[%T] %n: %v%$");
         s_CoreLogger = spdlog::stdout_color_mt("SOLAR");
         s_CoreLogger->set_level(spdlog::level::trace);
