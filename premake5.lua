@@ -26,7 +26,8 @@ project "Solar"
 
     includedirs
     {
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{prj.name}/source/Solar"
     }
 
     filter "system:Windows"
