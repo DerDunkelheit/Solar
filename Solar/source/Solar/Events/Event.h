@@ -1,10 +1,6 @@
 #pragma once
 
-//TODO: move to precompile headers
-#include <string>
-#include <functional>
-
-#include "Core.h"
+#include "Solar/Core.h"
 
 namespace Solar
 {

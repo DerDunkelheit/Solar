@@ -1,10 +1,9 @@
 #pragma once
 
-#include <memory.h>
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 
-#include "Core.h"
+#include "Solar/Core.h"
 
 namespace Solar
 {

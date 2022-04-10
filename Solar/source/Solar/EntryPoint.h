@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #ifdef SL_PLATFROM_WINDOWS
 
 extern Solar::Application* Solar::CreateApplication();

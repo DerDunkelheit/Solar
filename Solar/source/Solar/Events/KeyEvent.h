@@ -1,8 +1,6 @@
 #pragma once
 
-#include <sstream>
-
-#include "Events/Event.h"
+#include "Solar/Events/Event.h"
 
 namespace Solar
 {

@@ -18,6 +18,9 @@ project "Solar"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "slpch.h"
+    pchsource "Solar/source/slpch.cpp"
+
     files
     {
         "%{prj.name}/source/**.h",
@@ -27,7 +30,7 @@ project "Solar"
     includedirs
     {
         "%{prj.name}/vendor/spdlog/include",
-        "%{prj.name}/source/Solar"
+        "%{prj.name}/source"
     }
 
     filter "system:Windows"

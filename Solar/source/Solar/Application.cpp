@@ -1,7 +1,7 @@
-#include "Application.h"
+#include "slpch.h"
 
-#include "Events/ApplicationEvent.h"
-#include "Log.h"
+#include "Application.h"
+#include "Solar/Events/ApplicationEvent.h"
 
 namespace Solar
 {
