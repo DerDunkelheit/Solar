@@ -72,7 +72,6 @@ namespace Solar
         glfwSetKeyCallback(mWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
             {
                 WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
-                KeyPressedEvent engineEvent;
                 
                 switch (action)
                 {

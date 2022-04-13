@@ -14,7 +14,7 @@ namespace Solar
         unsigned int height;
 
         WindowProps(const std::string& _title = "Solar Engine", unsigned int _widht = 1280, unsigned int _height = 720)
-            : width(_widht), height(_height), title(_title)
+            : title(_title), width(_widht), height(_height)
         {
 
         }
