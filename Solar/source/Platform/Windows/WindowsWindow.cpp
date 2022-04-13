@@ -43,7 +43,7 @@ namespace Solar
             s_GLFWInitialized = true;
         }
 
-        mWindow = glfwCreateWindow((int)props.width, (int)props.height, mData.title.c_str(), nullptr, nullptr);
+        mWindow = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), mData.title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(mWindow);
         glfwSetWindowUserPointer(mWindow, &mData);
         SetVSync(true);
@@ -63,7 +63,7 @@ namespace Solar
         glfwSetWindowCloseCallback(mWindow, [](GLFWwindow* window)
         {
             //we could cast void pointer to windowData because we set it to WindowData
-            WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+            const WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
             WindowCloseEvent engineEvent;
             data.EventCallback(engineEvent);
@@ -71,7 +71,7 @@ namespace Solar
 
         glfwSetKeyCallback(mWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
             {
-                WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+                const WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
                 
                 switch (action)
                 {
@@ -104,7 +104,7 @@ namespace Solar
 
         glfwSetMouseButtonCallback(mWindow, [](GLFWwindow* window, int button, int action, int mods)
         {
-                WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+            const WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
                 switch (action)
                 {
                     case GLFW_PRESS:
@@ -127,7 +127,7 @@ namespace Solar
 
         glfwSetScrollCallback(mWindow, [](GLFWwindow* window, double xoffset, double yoffset)
         {
-                WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+            const WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
                 
                 MouseScrolledEvent event(static_cast<float>(xoffset), static_cast<float>(yoffset));
                 data.EventCallback(event);
@@ -135,7 +135,7 @@ namespace Solar
 
         glfwSetCursorPosCallback(mWindow, [](GLFWwindow* window, double xpos, double ypos)
         {
-                WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+            const WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
                 MouseMovedEvent event(static_cast<float>(xpos), static_cast<float>(ypos));
                 data.EventCallback(event);
