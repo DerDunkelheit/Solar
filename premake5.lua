@@ -10,6 +10,12 @@ workspace "Solar"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Solar/vendor/GLFW/include"
+
+--Include for other premake lua files.
+include "Solar/vendor/GLFW"
+
 project "Solar"
     location "Solar"
     kind "SharedLib"
@@ -30,7 +36,14 @@ project "Solar"
     includedirs
     {
         "%{prj.name}/vendor/spdlog/include",
-        "%{prj.name}/source"
+        "%{prj.name}/source",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:Windows"
@@ -52,7 +65,8 @@ project "Solar"
     filter "configurations:Debug"
         defines
         {
-            "SL_DEBUG"
+            "SL_DEBUG",
+            "SL_ENABLE_ASSERTS"
         }
         symbols "On"
 

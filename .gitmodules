@@ -1,3 +1,6 @@
 [submodule "Solar/vendor/spdlog"]
 	path = Solar/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Solar/vendor/GLFW"]
+	path = Solar/vendor/GLFW
+	url = https://github.com/glfw/glfw.git

@@ -1,4 +1,5 @@
 #pragma once
+#include "slpch.h"
 
 #include "Solar/Core.h"
 
@@ -61,13 +62,11 @@ namespace Solar
 		{
 		}
 
-		// F will be deduced by the compiler
 		template<typename T>
 		bool Dispatch(const EventFu<T> func)
 		{
 			if (mEvent.GetEventType() == T::GetStaticType())
 			{
-				//TODO: maybe static_cast???
 				mEvent.Handled = func(*reinterpret_cast<T*>(&mEvent));
 				return true;
 			}
