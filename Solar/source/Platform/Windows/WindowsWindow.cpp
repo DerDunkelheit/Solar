@@ -1,5 +1,7 @@
 #include "slpch.h"
 
+#include <glad/glad.h>
+
 #include "WindowsWindow.h"
 #include "Solar/Log.h"
 #include "Solar/Events/ApplicationEvent.h"
@@ -45,6 +47,11 @@ namespace Solar
 
         mWindow = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), mData.title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(mWindow);
+
+        //Init Glad
+        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        SL_CORE_ASSERT(status);
+
         glfwSetWindowUserPointer(mWindow, &mData);
         SetVSync(true);
 

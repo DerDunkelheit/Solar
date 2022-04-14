@@ -12,9 +12,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Solar/vendor/GLFW/include"
+IncludeDir["Glad"] = "Solar/vendor/Glad/include"
 
 --Include for other premake lua files.
 include "Solar/vendor/GLFW"
+include "Solar/vendor/Glad"
 
 project "Solar"
     location "Solar"
@@ -37,12 +39,14 @@ project "Solar"
     {
         "%{prj.name}/vendor/spdlog/include",
         "%{prj.name}/source",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -54,7 +58,8 @@ project "Solar"
         defines
         {
             "SL_PLATFROM_WINDOWS",
-            "SL_BUILD_DLL"
+            "SL_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
