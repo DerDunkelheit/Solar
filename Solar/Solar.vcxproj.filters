@@ -13,6 +13,9 @@
     <Filter Include="Solar\Events">
       <UniqueIdentifier>{8A251FE3-7688-AE87-1F0E-E73D0B507A0A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Solar\Layers">
+      <UniqueIdentifier>{651002F2-5173-9196-FAF8-C94CE63A5D19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h">
@@ -40,6 +43,12 @@
     <ClInclude Include="source\Solar\Events\MouseEvent.h">
       <Filter>Solar\Events</Filter>
     </ClInclude>
+    <ClInclude Include="source\Solar\Layers\Layer.h">
+      <Filter>Solar\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Layers\LayerStack.h">
+      <Filter>Solar\Layers</Filter>
+    </ClInclude>
     <ClInclude Include="source\Solar\Log.h">
       <Filter>Solar</Filter>
     </ClInclude>
@@ -54,6 +63,12 @@
     </ClCompile>
     <ClCompile Include="source\Solar\Application.cpp">
       <Filter>Solar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Layers\Layer.cpp">
+      <Filter>Solar\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Layers\LayerStack.cpp">
+      <Filter>Solar\Layers</Filter>
     </ClCompile>
     <ClCompile Include="source\Solar\Log.cpp">
       <Filter>Solar</Filter>

@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -135,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -158,6 +161,8 @@
     <ClInclude Include="source\Solar\Events\Event.h" />
     <ClInclude Include="source\Solar\Events\KeyEvent.h" />
     <ClInclude Include="source\Solar\Events\MouseEvent.h" />
+    <ClInclude Include="source\Solar\Layers\Layer.h" />
+    <ClInclude Include="source\Solar\Layers\LayerStack.h" />
     <ClInclude Include="source\Solar\Log.h" />
     <ClInclude Include="source\Solar\Window.h" />
     <ClInclude Include="source\slpch.h" />
@@ -165,6 +170,8 @@
   <ItemGroup>
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="source\Solar\Application.cpp" />
+    <ClCompile Include="source\Solar\Layers\Layer.cpp" />
+    <ClCompile Include="source\Solar\Layers\LayerStack.cpp" />
     <ClCompile Include="source\Solar\Log.cpp" />
     <ClCompile Include="source\slpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
