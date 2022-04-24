@@ -29,10 +29,10 @@ namespace Solar
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable docking
 
         const char* glsl_version = "#version 130";
-        Application& app = Application::Get();
-        //VERY BAAAAAAAAAAD
-        WindowsWindow& window = static_cast<WindowsWindow&>(app.GetWindow());
-        ImGui_ImplGlfw_InitForOpenGL(static_cast<GLFWwindow*>(window.GetNativeWindow()), true);
+        const Application& app = Application::Get();
+        
+        //TODO: create a platform specific wrapper for getting windows 
+        ImGui_ImplGlfw_InitForOpenGL(static_cast<WindowsWindow&>(app.GetWindow()).GetNativeWindow(), true);
         ImGui_ImplOpenGL3_Init(glsl_version);
 
         ImGui::StyleColorsDark();
@@ -50,10 +50,10 @@ namespace Solar
         ImGui::NewFrame();
 
         ImGuiIO& io = ImGui::GetIO();
-        Application& app = Application::Get();
+        const Application& app = Application::Get();
         io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
-        float time = (float)glfwGetTime();
+        float time = static_cast<float>(glfwGetTime());
         io.DeltaTime = mTime > 0.0 ? (time - mTime) : (1.0f / 60.0f);
         mTime = time;
 

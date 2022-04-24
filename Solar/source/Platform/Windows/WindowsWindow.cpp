@@ -37,7 +37,7 @@ namespace Solar
 
         if (!s_GLFWInitialized)
         {
-            int success = glfwInit();
+            const int success = glfwInit();
             SL_CORE_ASSERT(success);
 
             glfwSetErrorCallback(GLFWErrorCallback);
@@ -49,7 +49,7 @@ namespace Solar
         glfwMakeContextCurrent(mWindow);
 
         //Init Glad
-        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        const int status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
         SL_CORE_ASSERT(status);
 
         glfwSetWindowUserPointer(mWindow, &mData);

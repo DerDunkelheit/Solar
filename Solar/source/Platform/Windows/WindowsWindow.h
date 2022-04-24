@@ -22,8 +22,8 @@ namespace Solar
         virtual void SetEventCallback(const EventCallbackFn& callback) override { mData.EventCallback = callback; }
         virtual void SetVSync(bool enabled) override;
         virtual bool IsVSync() const override;
-
-        virtual void* GetNativeWindow() const { return mWindow; }
+        
+        virtual GLFWwindow* GetNativeWindow() const { return mWindow; }
 
     private:
         virtual void Init(const WindowProps& props);

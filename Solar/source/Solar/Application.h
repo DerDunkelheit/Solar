@@ -27,7 +27,7 @@ namespace Solar
             return *s_Instance;
         }
 
-        Window& GetWindow() { return *mWindow; }
+        Window& GetWindow() const { return *mWindow; }
     private:
         bool OnWindowClosed(WindowCloseEvent& event);
 
