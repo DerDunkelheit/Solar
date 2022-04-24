@@ -152,6 +152,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGl\ImGuiGLFWRenderer.h" />
+    <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLLoader.h" />
     <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="source\Solar.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="source\slpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGl\ImGuiGLFWRenderer.cpp" />
     <ClCompile Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="source\Platform\OpenGl\OpenGLGlfwmain.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />

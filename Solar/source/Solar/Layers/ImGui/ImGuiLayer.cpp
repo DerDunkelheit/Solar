@@ -1,14 +1,9 @@
 ﻿#include "slpch.h"
 
 #include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include <stdio.h>
+#include "Platform/OpenGl/ImGuiOpenGLRenderer.h"
+#include "Platform/OpenGl/ImGuiGLFWRenderer.h"
 #include <glad/glad.h>
-#if defined(IMGUI_IMPL_OPENGL_ES2)
-#include <GLES2/gl2.h>
-#endif
-#include <GLFW/glfw3.h> // Will drag system OpenGL headers
 
 #include "ImGuiLayer.h"
 #include "Solar/Application.h"
@@ -30,7 +25,8 @@ namespace Solar
     {
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO(); (void)io;
-        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable docking
 
         const char* glsl_version = "#version 130";
         Application& app = Application::Get();
