@@ -4,3 +4,6 @@
 [submodule "Solar/vendor/GLFW"]
 	path = Solar/vendor/GLFW
 	url = https://github.com/glfw/glfw.git
+[submodule "Solar/vendor/imgui"]
+	path = Solar/vendor/imgui
+	url = https://github.com/ocornut/imgui.git

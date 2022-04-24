@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGl">
+      <UniqueIdentifier>{3E7D2C1D-AA08-9AE1-B319-1DD61F24F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -16,8 +19,14 @@
     <Filter Include="Solar\Layers">
       <UniqueIdentifier>{651002F2-5173-9196-FAF8-C94CE63A5D19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Solar\Layers\ImGui">
+      <UniqueIdentifier>{4F7D1061-3B61-D1B6-A4C1-CB0990C4BB38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGl</Filter>
+    </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -43,6 +52,9 @@
     <ClInclude Include="source\Solar\Events\MouseEvent.h">
       <Filter>Solar\Events</Filter>
     </ClInclude>
+    <ClInclude Include="source\Solar\Layers\ImGui\ImGuiLayer.h">
+      <Filter>Solar\Layers\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="source\Solar\Layers\Layer.h">
       <Filter>Solar\Layers</Filter>
     </ClInclude>
@@ -58,11 +70,20 @@
     <ClInclude Include="source\slpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGl\OpenGLGlfwmain.cpp">
+      <Filter>Platform\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="source\Solar\Application.cpp">
       <Filter>Solar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Layers\ImGui\ImGuiLayer.cpp">
+      <Filter>Solar\Layers\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="source\Solar\Layers\Layer.cpp">
       <Filter>Solar\Layers</Filter>

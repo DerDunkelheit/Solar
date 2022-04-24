@@ -21,8 +21,18 @@ namespace Solar
 
         void PushLayer(Layer* layer);
         void PushOverlay(Layer* overlay);
+
+        static Application& Get()
+        {
+            return *s_Instance;
+        }
+
+        Window& GetWindow() { return *mWindow; }
     private:
         bool OnWindowClosed(WindowCloseEvent& event);
+
+    private:
+        static Application* s_Instance;
 
         std::unique_ptr<Window> mWindow;
         bool m_Running = true;

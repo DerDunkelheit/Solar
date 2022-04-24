@@ -7,13 +7,19 @@
 #include "Layers/Layer.h"
 #include "Solar/Events/Event.h"
 #include "Solar/Events/ApplicationEvent.h"
+#include "Solar/Window.h"
 
 namespace Solar
 {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
+    Application* Application::s_Instance = nullptr;
+
     Application::Application()
     {
+        SL_CORE_ASSERT(s_Instance == nullptr)
+        s_Instance = this;
+
         mWindow = std::unique_ptr<Window>(Window::Create());
         mWindow->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
     }
@@ -53,11 +59,13 @@ namespace Solar
     void Application::PushLayer(Layer* layer)
     {
         mLayerStack.PushLayer(layer);
+        layer->OnAttach();
     }
 
     void Application::PushOverlay(Layer* overlay)
     {
         mLayerStack.PushOverlay(overlay);
+        overlay->OnAttach();
     }
 
     bool Application::OnWindowClosed(WindowCloseEvent& event)

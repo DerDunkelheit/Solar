@@ -1,5 +1,6 @@
 #include <Solar.h>
 
+
 class ExampleLayer : public Solar::Layer
 {
 public:
@@ -8,12 +9,12 @@ public:
 
     virtual void OnUpdate() override
     {
-        SL_INFO("ExampleLayer::OnUpdate");
+        
     }
 
     virtual void OnEvent(Solar::Event& event) override
     {
-        SL_TRACE("{0}", event);
+        
     }
 };
 
@@ -23,6 +24,7 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer);
+        PushOverlay(new Solar::ImGuiLayer);
     }
 
     virtual ~Sandbox() override
