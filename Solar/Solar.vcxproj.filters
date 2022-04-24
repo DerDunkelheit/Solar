@@ -24,6 +24,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGl\ImGuiGLFWRenderer.h">
+      <Filter>Platform\OpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLLoader.h">
+      <Filter>Platform\OpenGl</Filter>
+    </ClInclude>
     <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGl</Filter>
     </ClInclude>
@@ -70,6 +76,9 @@
     <ClInclude Include="source\slpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGl\ImGuiGLFWRenderer.cpp">
+      <Filter>Platform\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGl</Filter>
     </ClCompile>

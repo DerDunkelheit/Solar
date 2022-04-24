@@ -1,5 +1,6 @@
 workspace "Solar"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations
     {
@@ -25,6 +26,7 @@ project "Solar"
     location "Solar"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -58,7 +60,6 @@ project "Solar"
 
     filter "system:Windows"
         cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -79,7 +80,7 @@ project "Solar"
             "SL_DEBUG",
             "SL_ENABLE_ASSERTS"
         }
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     
@@ -88,7 +89,7 @@ project "Solar"
     {
         "SL_RELEASE"
     }
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
 
     filter "configurations:Dist"
@@ -96,13 +97,14 @@ project "Solar"
     {
         "SL_DIST"
     }
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -126,7 +128,6 @@ project "Sandbox"
 
     filter "system:Windows"
         cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
     defines
@@ -139,7 +140,7 @@ project "Sandbox"
     {
         "SL_DEBUG"
     }
-    buildoptions "/MDd"
+    runtime "Debug"
     symbols "On"
     
     filter "configurations:Release"
@@ -147,7 +148,7 @@ project "Sandbox"
     {
         "SL_RELEASE"
     }
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
 
     filter "configurations:Dist"
@@ -155,5 +156,5 @@ project "Sandbox"
     {
         "SL_DIST"
     }
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
