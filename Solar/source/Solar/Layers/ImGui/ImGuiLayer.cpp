@@ -78,6 +78,6 @@ namespace Solar
 
     void ImGuiLayer::OnEvent(Event& event)
     {
-        SL_CORE_TRACE("{0}", event);
+        
     }
 }

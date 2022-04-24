@@ -10,7 +10,6 @@ int main(int argc, char** argv)
 {
     Solar::Log::Init();
     SL_CORE_WARN("Initialized Log!");
-    SL_INFO("Hello!");
 
     for (int i = 0; i < argc; i++)
     {

@@ -2,6 +2,8 @@
 
 #include <spdlog/sinks/stdout_color_sinks.h>
 
+#include "Solar/PreSystems/FileReader.h"
+
 namespace Solar
 {
      std::shared_ptr <spdlog::logger> Log::s_CoreLogger;
@@ -9,8 +11,7 @@ namespace Solar
 
     void Log::Init()
     {
-        //TODO: get pattern from a file?? in order to remove recompilation
-        spdlog::set_pattern("%^[%T] %n: %v%$");
+        spdlog::set_pattern(FileReader::ReadFile("Resources/Log/LogSettings.txt"));
         s_CoreLogger = spdlog::stdout_color_mt("SOLAR");
         s_CoreLogger->set_level(spdlog::level::trace);
 
