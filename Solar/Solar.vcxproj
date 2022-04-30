@@ -161,6 +161,7 @@
     <ClInclude Include="source\Solar\Events\Event.h" />
     <ClInclude Include="source\Solar\Events\KeyEvent.h" />
     <ClInclude Include="source\Solar\Events\MouseEvent.h" />
+    <ClInclude Include="source\Solar\Input.h" />
     <ClInclude Include="source\Solar\Layers\ImGui\ImGuiLayer.h" />
     <ClInclude Include="source\Solar\Layers\Layer.h" />
     <ClInclude Include="source\Solar\Layers\LayerStack.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="source\Platform\OpenGl\ImGuiGLFWRenderer.cpp" />
     <ClCompile Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="source\Platform\OpenGl\OpenGLGlfwmain.cpp" />
+    <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="source\Solar\Application.cpp" />
     <ClCompile Include="source\Solar\Layers\ImGui\ImGuiLayer.cpp" />

@@ -33,7 +33,7 @@ namespace Solar
         const Application& app = Application::Get();
         
         //TODO: create a platform specific wrapper for getting windows 
-        ImGui_ImplGlfw_InitForOpenGL(static_cast<WindowsWindow&>(app.GetWindow()).GetNativeWindow(), true);
+        ImGui_ImplGlfw_InitForOpenGL(static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow()), true);
         ImGui_ImplOpenGL3_Init(glsl_version);
 
         ImGui::StyleColorsDark();
