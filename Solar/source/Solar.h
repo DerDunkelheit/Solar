@@ -7,6 +7,10 @@
 #include "Solar/Log.h";
 #include "Solar/Layers/ImGui/ImGuiLayer.h"
 
+#include "Solar/Input.h"
+#include "Solar/KeyCodes.h"
+#include "Solar/MouseButtonCodes.h"
+
 // ---Entry Point-----------------
 #include "Solar/EntryPoint.h"
 //--------------------------------
