@@ -1,5 +1,7 @@
 ﻿#include "slpch.h"
 
+#ifdef SL_PLATFROM_WINDOWS
+
 #include <GLFW/glfw3.h>
 
 #include "Solar/Input.h"
@@ -45,3 +47,5 @@ namespace Solar
         return y;
     }
 }
+
+#endif
