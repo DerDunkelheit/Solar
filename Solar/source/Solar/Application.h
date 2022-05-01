@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Layers/LayerStack.h"
+#include "Solar/Layers/ImGui/ImGuiLayer.h"
 
 namespace Solar
 {
@@ -35,6 +36,7 @@ namespace Solar
         static Application* s_Instance;
 
         std::unique_ptr<Window> mWindow;
+        ImGuiLayer* mImGuiLayer;
         bool m_Running = true;
         LayerStack mLayerStack;
     };

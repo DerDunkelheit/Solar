@@ -7,7 +7,6 @@
 #include "Layers/Layer.h"
 #include "Solar/Events/Event.h"
 #include "Solar/Events/ApplicationEvent.h"
-#include "Solar/Window.h"
 
 namespace Solar
 {
@@ -22,6 +21,9 @@ namespace Solar
 
         mWindow = std::unique_ptr<Window>(Window::Create());
         mWindow->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+
+        mImGuiLayer = new ImGuiLayer();
+        PushOverlay(mImGuiLayer);
     }
 
     Application::~Application()
@@ -39,6 +41,14 @@ namespace Solar
             {
                 layer->OnUpdate();
             }
+
+            //TODO: to separate thread
+            mImGuiLayer->Begin();
+            for (Layer* layer : mLayerStack)
+            {
+                layer->OnImGuiRender();
+            }
+            mImGuiLayer->End();
             
             mWindow->OnUpdate();
         }

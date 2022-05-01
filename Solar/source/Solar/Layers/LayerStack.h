@@ -22,6 +22,6 @@ namespace Solar
         
     private:
         std::vector<Layer*> mLayers;
-        std::vector<Layer*>::iterator mLayerInsert;
+        uint32_t mLayerInsertIndex = 0;
     };
 }

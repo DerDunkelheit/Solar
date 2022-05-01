@@ -7,7 +7,7 @@ namespace Solar
 {
     LayerStack::LayerStack()
     {
-        mLayerInsert = mLayers.begin();
+       
     }
 
     LayerStack::~LayerStack()
@@ -21,7 +21,8 @@ namespace Solar
     void LayerStack::PushLayer(Layer* layer)
     {
         //We use mLayerInsert in order to place layer, so overlays are always in front of layers.
-        mLayerInsert = mLayers.emplace(mLayerInsert, layer);
+        mLayers.emplace(mLayers.begin()+ mLayerInsertIndex, layer);
+        mLayerInsertIndex++;
     }
 
     void LayerStack::PushOverlay(Layer* overlay)
@@ -35,7 +36,7 @@ namespace Solar
         if (it != mLayers.end())
         {
             mLayers.erase(it);
-            --mLayerInsert;
+            mLayerInsertIndex--;
         }
     }
 
