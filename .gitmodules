@@ -7,3 +7,6 @@
 [submodule "Solar/vendor/imgui"]
 	path = Solar/vendor/imgui
 	url = https://github.com/ocornut/imgui.git
+[submodule "Solar/vendor/glm"]
+	path = Solar/vendor/glm
+	url = https://github.com/g-truc/glm.git

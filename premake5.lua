@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "Solar/vendor/GLFW/include"
 IncludeDir["Glad"] = "Solar/vendor/Glad/include"
 IncludeDir["ImGui"] = "Solar/vendor/imgui"
 IncludeDir["ImGuiBackends"] = "Solar/vendor/imgui/backends"
+IncludeDir["glm"] = "Solar/vendor/glm"
 
 --Include for other premake lua files.
 include "Solar/vendor/GLFW"
@@ -37,7 +38,9 @@ project "Solar"
     files
     {
         "%{prj.name}/source/**.h",
-        "%{prj.name}/source/**.cpp"
+        "%{prj.name}/source/**.cpp",
+        "%{prj.name}/vendor/glm/**.hpp",
+        "%{prj.name}/vendor/glm/**.inl",
     }
 
     includedirs
@@ -48,6 +51,7 @@ project "Solar"
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.ImGuiBackends}",
+        "%{IncludeDir.glm}",
     }
 
     links
@@ -118,7 +122,8 @@ project "Sandbox"
     includedirs
     {
         "Solar/vendor/spdlog/include",
-        "Solar/source"
+        "Solar/source",
+        "%{IncludeDir.glm}"
     }
 
     links
