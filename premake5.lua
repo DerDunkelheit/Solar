@@ -17,6 +17,7 @@ IncludeDir["Glad"] = "Solar/vendor/Glad/include"
 IncludeDir["ImGui"] = "Solar/vendor/imgui"
 IncludeDir["ImGuiBackends"] = "Solar/vendor/imgui/backends"
 IncludeDir["glm"] = "Solar/vendor/glm"
+IncludeDir["stb_image"] = "Solar/vendor/stb_image"
 
 --Include for other premake lua files.
 group "Dependencies"
@@ -43,6 +44,8 @@ project "Solar"
         "%{prj.name}/source/**.cpp",
         "%{prj.name}/vendor/glm/**.hpp",
         "%{prj.name}/vendor/glm/**.inl",
+        "%{prj.name}/vendor/stb_image/**.h",
+        "%{prj.name}/vendor/stb_image/**.cpp",
     }
 
     includedirs
@@ -54,6 +57,7 @@ project "Solar"
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.ImGuiBackends}",
         "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}",
     }
 
     links
