@@ -78,7 +78,7 @@ namespace Solar
         });
 
         glfwSetKeyCallback(mWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-            {
+        {
                 const WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
                 
                 switch (action)
@@ -108,7 +108,7 @@ namespace Solar
                 default:
                     break;
                 }
-            });
+        });
 
         glfwSetMouseButtonCallback(mWindow, [](GLFWwindow* window, int button, int action, int mods)
         {
