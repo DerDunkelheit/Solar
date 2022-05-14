@@ -1,11 +1,13 @@
 #pragma once
 
-#include <GLFW/glfw3.h>
-
 #include "Solar/Window.h"
+
+struct GLFWwindow;
 
 namespace Solar
 {
+    class GraphicsContext;
+
     class WindowsWindow : public Window
     {
     public:
@@ -30,6 +32,7 @@ namespace Solar
         virtual void Shutdown();
     private:
         GLFWwindow* mWindow;
+        GraphicsContext* mContext;
 
         struct WindowData
         {

@@ -1356,6 +1356,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\GraphicsContext.h" />
+    <ClInclude Include="source\Platform\OpenGl\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Platform\Windows\TestInput.cpp">
@@ -1394,5 +1396,6 @@
     <ClCompile Include="vendor\stb_image\std_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="source\Platform\OpenGl\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

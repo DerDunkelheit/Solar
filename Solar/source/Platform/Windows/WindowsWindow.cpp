@@ -1,6 +1,6 @@
 #include "slpch.h"
 
-#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <stb_image.h>
 
 #include "WindowsWindow.h"
@@ -8,6 +8,8 @@
 #include "Solar/Events/ApplicationEvent.h"
 #include "Solar/Events/KeyEvent.h"
 #include "Solar/Events/MouseEvent.h"
+
+#include "Platform/OpenGl/OpenGLContext.h"
 
 namespace Solar
 {
@@ -47,19 +49,9 @@ namespace Solar
         }
 
         mWindow = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), mData.title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(mWindow);
 
-        //Set window image.
-        std::string imagePath = "Resources/WindowsAssets/WindowIcon.png";
-        SL_CORE_ASSERT(std::filesystem::exists(imagePath));
-        GLFWimage windowImages[1];
-        windowImages[0].pixels = stbi_load(imagePath.c_str(), &windowImages[0].width, &windowImages[0].height, 0, 4);
-        glfwSetWindowIcon(mWindow, 1, windowImages);
-        stbi_image_free(windowImages[0].pixels);
-
-        //Init Glad
-        const int status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
-        SL_CORE_ASSERT(status);
+        mContext = new OpenGLContext(mWindow);
+        mContext->Init();
 
         glfwSetWindowUserPointer(mWindow, &mData);
         SetVSync(true);
@@ -157,6 +149,14 @@ namespace Solar
                 data.EventCallback(event);
 
         });
+
+        //Set window image.
+        std::string imagePath = "Resources/WindowsAssets/WindowIcon.png";
+        SL_CORE_ASSERT(std::filesystem::exists(imagePath));
+        GLFWimage windowImage;
+        windowImage.pixels = stbi_load(imagePath.c_str(), &windowImage.width, &windowImage.height, 0, 4);
+        glfwSetWindowIcon(mWindow, 1, &windowImage);
+        stbi_image_free(windowImage.pixels);
     }
 
     WindowsWindow::~WindowsWindow()
@@ -167,7 +167,7 @@ namespace Solar
     void WindowsWindow::OnUpdate()
     {
         glfwPollEvents();
-        glfwSwapBuffers(mWindow);
+        mContext->SwapBuffers();
     }
 
     void WindowsWindow::SetVSync(bool enabled)
