@@ -32,7 +32,7 @@ namespace Solar
         double xPos, yPos;
         glfwGetCursorPos(window, &xPos, &yPos);
 
-        return {xPos, yPos};
+        return {static_cast<float>(xPos), static_cast<float>(yPos)};
     }
 
     float Input::GetMouseX()

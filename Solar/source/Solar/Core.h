@@ -3,11 +3,15 @@
 #include <filesystem>
 
 #ifdef SL_PLATFROM_WINDOWS
+#if SL_DYNAMIC_LINK
     #ifdef SL_BUILD_DLL
         #define SOLAR_API __declspec(dllexport)
     #else
         #define SOLAR_API __declspec(dllimport)
     #endif
+#else
+    #define SOLAR_API
+#endif
 #else
 #error Solar only supports Windows!
 #endif

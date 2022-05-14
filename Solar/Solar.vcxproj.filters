@@ -7,9 +7,6 @@
     <Filter Include="source\Platform">
       <UniqueIdentifier>{8A00977C-F68B-0441-FF9C-87356BA76041}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\Platform\OpenGl">
-      <UniqueIdentifier>{9E6A90CA-8A64-B91C-73D1-4F2D5F6A1F89}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\Platform\Windows">
       <UniqueIdentifier>{C494B974-30CC-010C-39D6-652FA58C2805}</UniqueIdentifier>
     </Filter>
@@ -49,17 +46,11 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Platform\OpenGl\ImGuiGLFWRenderer.h">
-      <Filter>source\Platform\OpenGl</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLLoader.h">
-      <Filter>source\Platform\OpenGl</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.h">
-      <Filter>source\Platform\OpenGl</Filter>
-    </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h">
       <Filter>source\Platform\Windows</Filter>
     </ClInclude>
@@ -1362,17 +1353,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Platform\OpenGl\ImGuiGLFWRenderer.cpp">
-      <Filter>source\Platform\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Platform\OpenGl\ImGuiOpenGLRenderer.cpp">
-      <Filter>source\Platform\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Platform\OpenGl\OpenGLGlfwmain.cpp">
-      <Filter>source\Platform\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="source\Platform\Windows\TestInput.cpp">
       <Filter>source\Platform\Windows</Filter>
     </ClCompile>
@@ -1384,6 +1369,9 @@
     </ClCompile>
     <ClCompile Include="source\Solar\Application.cpp">
       <Filter>source\Solar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Layers\ImGui\ImGuiBuild.cpp">
+      <Filter>source\Solar\Layers\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="source\Solar\Layers\ImGui\ImGuiLayer.cpp">
       <Filter>source\Solar\Layers\ImGui</Filter>
@@ -1402,6 +1390,9 @@
     </ClCompile>
     <ClCompile Include="source\slpch.cpp">
       <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\std_image.cpp">
+      <Filter>vendor\stb_image</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

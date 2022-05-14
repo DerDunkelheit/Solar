@@ -28,9 +28,10 @@ group ""
 
 project "Solar"
     location "Solar"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++20"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -46,6 +47,11 @@ project "Solar"
         "%{prj.name}/vendor/glm/**.inl",
         "%{prj.name}/vendor/stb_image/**.h",
         "%{prj.name}/vendor/stb_image/**.cpp",
+    }
+
+    defines
+    {
+        "_CRT_SECURE_NO_WARNINGS"
     }
 
     includedirs
@@ -69,19 +75,13 @@ project "Solar"
     }
 
     filter "system:Windows"
-        cppdialect "C++20"
         systemversion "latest"
 
         defines
         {
             "SL_PLATFROM_WINDOWS",
             "SL_BUILD_DLL",
-            "GLFW_INCLUDE_NONE"
-        }
-
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            "GLFW_INCLUDE_NONE",
         }
 
     filter "configurations:Debug"
@@ -91,7 +91,7 @@ project "Solar"
             "SL_ENABLE_ASSERTS"
         }
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     
     filter "configurations:Release"
@@ -100,7 +100,7 @@ project "Solar"
         "SL_RELEASE"
     }
     runtime "Release"
-    optimize "On"
+    optimize "on"
 
     filter "configurations:Dist"
     defines
@@ -108,13 +108,14 @@ project "Solar"
         "SL_DIST"
     }
     runtime "Release"
-    optimize "On"
+    optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++20"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -139,7 +140,6 @@ project "Sandbox"
     }
 
     filter "system:Windows"
-        cppdialect "C++20"
         systemversion "latest"
 
     defines
@@ -153,7 +153,7 @@ project "Sandbox"
         "SL_DEBUG"
     }
     runtime "Debug"
-    symbols "On"
+    symbols "on"
     
     filter "configurations:Release"
     defines
@@ -161,7 +161,7 @@ project "Sandbox"
         "SL_RELEASE"
     }
     runtime "Release"
-    optimize "On"
+    optimize "on"
 
     filter "configurations:Dist"
     defines
@@ -169,4 +169,4 @@ project "Sandbox"
         "SL_DIST"
     }
     runtime "Release"
-    optimize "On"
+    optimize "on"

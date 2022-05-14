@@ -2,9 +2,9 @@
 
 // For use by Solar applications
 
-#include "Solar/Application.h";
+#include "Solar/Application.h"
 #include "Solar/Layers/Layer.h"
-#include "Solar/Log.h";
+#include "Solar/Log.h"
 #include "Solar/Layers/ImGui/ImGuiLayer.h"
 
 #include "Solar/Input.h"
