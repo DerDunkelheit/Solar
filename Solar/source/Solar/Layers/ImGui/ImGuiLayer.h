@@ -7,6 +7,8 @@ namespace Solar
     class SOLAR_API ImGuiLayer : public Layer
     {
     public:
+        using EventCallbackFn = std::function<void(Event&)>;
+
         ImGuiLayer();
         ~ImGuiLayer();
 
@@ -17,7 +19,12 @@ namespace Solar
 
         void Begin();
         void End();
+
+        //TODO: maybe replace to base class
+        void SetEventCallback(const EventCallbackFn& callback) { mEventCallback = callback; }
     private:
         float mTime = 0;
+
+        EventCallbackFn mEventCallback;
     };
 }

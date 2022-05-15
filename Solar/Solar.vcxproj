@@ -148,6 +148,7 @@
     <ClInclude Include="source\Solar\EntryPoint.h" />
     <ClInclude Include="source\Solar\Events\ApplicationEvent.h" />
     <ClInclude Include="source\Solar\Events\Event.h" />
+    <ClInclude Include="source\Solar\Events\ImGuiEvents.h" />
     <ClInclude Include="source\Solar\Events\KeyEvent.h" />
     <ClInclude Include="source\Solar\Events\MouseEvent.h" />
     <ClInclude Include="source\Solar\Input.h" />
@@ -159,6 +160,8 @@
     <ClInclude Include="source\Solar\MouseButtonCodes.h" />
     <ClInclude Include="source\Solar\PreSystems\FileReader.h" />
     <ClInclude Include="source\Solar\Renderer\GraphicsContext.h" />
+    <ClInclude Include="source\Solar\Renderer\Shader.h" />
+    <ClInclude Include="source\Solar\Renderer\Utils\ShaderUtils.h" />
     <ClInclude Include="source\Solar\Window.h" />
     <ClInclude Include="source\slpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -593,6 +596,8 @@
     <ClCompile Include="source\slpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\Shader.cpp" />
+    <ClCompile Include="source\Solar\Renderer\Utils\ShaderUtils.cpp" />
     <ClCompile Include="vendor\stb_image\std_image.cpp" />
   </ItemGroup>
   <ItemGroup>

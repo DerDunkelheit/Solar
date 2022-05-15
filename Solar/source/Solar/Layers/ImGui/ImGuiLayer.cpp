@@ -10,6 +10,7 @@
 #include "Solar/Application.h"
 #include "Solar/Window.h"
 #include "Platform/Windows/WindowsWindow.h"
+#include "Solar/Events/ImGuiEvents.h"
 
 namespace Solar
 {
@@ -72,6 +73,19 @@ namespace Solar
 
         static bool show = true;
         ImGui::ShowDemoWindow(&show);
+
+        ImGui::Begin("Debug", nullptr, ImGuiWindowFlags_NoCollapse);
+        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+        static float col1[3] = { 0.09f, 0.09f, 0.09f };
+        if (ImGui::ColorEdit3("color 1", col1))
+        {
+            if (mEventCallback != nullptr)
+            {
+                ColorChangedEvent event(col1[0], col1[1], col1[2]);
+                mEventCallback(event);
+            }
+        }
+        ImGui::End();
     }
     
    void ImGuiLayer::End()

@@ -3,11 +3,13 @@
 #include "Core.h"
 #include "Layers/LayerStack.h"
 #include "Solar/Layers/ImGui/ImGuiLayer.h"
+#include "Solar/Events/ImGuiEvents.h"
 
 namespace Solar
 {
     class Event;
     class WindowCloseEvent;
+    class WindowResizeEvent;
     class Window;
     class Layer;
 
@@ -31,6 +33,8 @@ namespace Solar
         Window& GetWindow() const { return *mWindow; }
     private:
         bool OnWindowClosed(WindowCloseEvent& event);
+        bool OnWindowResized(WindowResizeEvent& event);
+        bool OnColorChanged(ColorChangedEvent& event);
 
     private:
         static Application* s_Instance;
@@ -39,6 +43,12 @@ namespace Solar
         ImGuiLayer* mImGuiLayer;
         bool m_Running = true;
         LayerStack mLayerStack;
+
+
+        //TODO: create a proper container for this
+        float mRed = 0.09f;
+        float mGreen = 0.09f;
+        float mBlue = 0.09f;
     };
 
     // To be defined in CLIENT
