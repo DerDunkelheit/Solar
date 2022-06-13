@@ -1361,6 +1361,9 @@
     <ClInclude Include="source\Solar\Events\ImGuiEvents.h" />
     <ClInclude Include="source\Solar\Renderer\Shader.h" />
     <ClInclude Include="source\Solar\Renderer\Utils\ShaderUtils.h" />
+    <ClInclude Include="source\Solar\Renderer\Buffer.h" />
+    <ClInclude Include="source\Platform\OpenGl\OpenGLBuffer.h" />
+    <ClInclude Include="source\Solar\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Platform\Windows\TestInput.cpp">
@@ -1402,5 +1405,8 @@
     <ClCompile Include="source\Platform\OpenGl\OpenGLContext.cpp" />
     <ClCompile Include="source\Solar\Renderer\Shader.cpp" />
     <ClCompile Include="source\Solar\Renderer\Utils\ShaderUtils.cpp" />
+    <ClCompile Include="source\Solar\Renderer\Buffer.cpp" />
+    <ClCompile Include="source\Platform\OpenGl\OpenGLBuffer.cpp" />
+    <ClCompile Include="source\Solar\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

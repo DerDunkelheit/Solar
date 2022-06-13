@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "Layers/Layer.h"
 #include "Solar/Events/Event.h"
+#include "Solar/Events/ImGuiEvents.h"
 #include "Solar/Events/ApplicationEvent.h"
 
 #include "Renderer/Utils/ShaderUtils.h"
@@ -48,32 +49,21 @@ namespace Solar
             0, 1, 4
         };
 
-        //vertex buffer object
-        uint32_t VBO, VAO, EBO;
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &EBO);
-        // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-        glBindVertexArray(VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+        mVertexArray.reset(VertexArray::Create());
+        mVertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+        mElementBuffer.reset(ElementBuffer::Create(indices, sizeof(indices)));
 
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+        const BufferLayout layout =
+        {
+            {ShaderDataType::Float3, "a_Position"}
+        };
 
-        glEnableVertexAttribArray(0);
-        // vertex can have a several attributes, for instacne positions, color, normal, etc.
-        // o is an attribute index (in this case positions)
-        // 3 is how many elements there are per attribute(x , y, z)
-        // GL_FLOAT is a type of attribute
-        // GL_FALSE for normalize (could be useful for colors)
-        // (sizeof(float) * 3) is a stride, which means the ending positions.
-        // 0 is offset of attribute, imagine if we have an attribute after positions and if we wanna use it, we have to set offses for it. (if would be sizeof(float) * x)
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, nullptr);
+        mVertexBuffer->SetLayout(layout);
+        mVertexArray->AddVertexBuffer(mVertexBuffer);
 
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+        //mSquareVertexArray.reset(VertexArray::Create());
+        //std::shared_ptr<VertexBuffer> squareVB = std::make_shared<VertexBuffer>();
 
         ShaderUtils::ShaderData shaderData = ShaderUtils::ParseShader("Resources/Shaders/Basic.shader");
         uint32_t shader = ShaderUtils::CreateShader(shaderData.VertexShader, shaderData.FragmentShader);
@@ -95,6 +85,7 @@ namespace Solar
             glClearColor(mRed, mGreen, mBlue, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            mVertexArray->Bind();
             glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
             for (Layer* layer : mLayerStack)

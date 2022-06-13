@@ -71,10 +71,8 @@ namespace Solar
         io.DeltaTime = mTime > 0.0 ? (time - mTime) : (1.0f / 60.0f);
         mTime = time;
 
-        static bool show = true;
-        ImGui::ShowDemoWindow(&show);
-
         ImGui::Begin("Debug", nullptr, ImGuiWindowFlags_NoCollapse);
+
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
         static float col1[3] = { 0.09f, 0.09f, 0.09f };
         if (ImGui::ColorEdit3("color 1", col1))
@@ -85,6 +83,12 @@ namespace Solar
                 mEventCallback(event);
             }
         }
+
+        ImGui::Separator();
+        static bool showDemoWindow = false;
+        ImGui::Checkbox("ShowDemoWindow", &showDemoWindow);
+        if (showDemoWindow) ImGui::ShowDemoWindow(&showDemoWindow);
+
         ImGui::End();
     }
     

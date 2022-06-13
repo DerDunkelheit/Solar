@@ -3,13 +3,15 @@
 #include "Core.h"
 #include "Layers/LayerStack.h"
 #include "Solar/Layers/ImGui/ImGuiLayer.h"
-#include "Solar/Events/ImGuiEvents.h"
+#include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
 
 namespace Solar
 {
     class Event;
     class WindowCloseEvent;
     class WindowResizeEvent;
+    class ColorChangedEvent;
     class Window;
     class Layer;
 
@@ -43,6 +45,15 @@ namespace Solar
         ImGuiLayer* mImGuiLayer;
         bool m_Running = true;
         LayerStack mLayerStack;
+
+
+        //Rendering
+        std::shared_ptr<VertexBuffer> mVertexBuffer;
+        std::shared_ptr<ElementBuffer> mElementBuffer;
+        std::shared_ptr<VertexArray> mVertexArray;
+
+        //for testing
+        std::shared_ptr<VertexArray> mSquareVertexArray;
 
 
         //TODO: create a proper container for this
