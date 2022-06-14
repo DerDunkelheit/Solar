@@ -3,8 +3,8 @@
 #include "Core.h"
 #include "Layers/LayerStack.h"
 #include "Solar/Layers/ImGui/ImGuiLayer.h"
-#include "Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/Shader.h"
 
 namespace Solar
 {
@@ -46,15 +46,13 @@ namespace Solar
         bool m_Running = true;
         LayerStack mLayerStack;
 
-
         //Rendering
-        std::shared_ptr<VertexBuffer> mVertexBuffer;
-        std::shared_ptr<ElementBuffer> mElementBuffer;
         std::shared_ptr<VertexArray> mVertexArray;
+        std::shared_ptr<Shader> shader;
 
         //for testing
         std::shared_ptr<VertexArray> mSquareVertexArray;
-
+        std::shared_ptr<Shader> shaderSqr;
 
         //TODO: create a proper container for this
         float mRed = 0.09f;

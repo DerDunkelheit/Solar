@@ -8,7 +8,6 @@
 #include "Solar/Events/Event.h"
 #include "Solar/Events/ImGuiEvents.h"
 #include "Solar/Events/ApplicationEvent.h"
-
 #include "Renderer/Utils/ShaderUtils.h"
 
 namespace Solar
@@ -50,28 +49,64 @@ namespace Solar
         };
 
         mVertexArray.reset(VertexArray::Create());
-        mVertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-        mElementBuffer.reset(ElementBuffer::Create(indices, sizeof(indices)));
+        std::shared_ptr<VertexBuffer> vertexBuffer;
+        std::shared_ptr<ElementBuffer> elementBuffer;
+        vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+        elementBuffer.reset(ElementBuffer::Create(indices, sizeof(indices)));
 
         const BufferLayout layout =
         {
             {ShaderDataType::Float3, "a_Position"}
         };
 
-        mVertexBuffer->SetLayout(layout);
-        mVertexArray->AddVertexBuffer(mVertexBuffer);
+        vertexBuffer->SetLayout(layout);
+        mVertexArray->AddVertexBuffer(vertexBuffer);
 
 
-        //mSquareVertexArray.reset(VertexArray::Create());
-        //std::shared_ptr<VertexBuffer> squareVB = std::make_shared<VertexBuffer>();
+        // For testing -----------------------------------------------------------------------
+        mSquareVertexArray.reset(VertexArray::Create());
 
-        ShaderUtils::ShaderData shaderData = ShaderUtils::ParseShader("Resources/Shaders/Basic.shader");
-        uint32_t shader = ShaderUtils::CreateShader(shaderData.VertexShader, shaderData.FragmentShader);
-        glUseProgram(shader);
+        float verticesSqr[] =
+        {
+            -0.75f, -0.75f, 0.0f,  // bottom left
+             0.75f, -0.75f, 0.0f,  // bottom right
+             0.75f,  0.75f, 0.0f,  // top right
+            -0.75f,  0.75f, 0.0f,  // top left 
+             0.0f,   0.5f,  0.0f   // top center
+        };
+
+        uint32_t indicesSqr[] =
+        {
+            // square 
+            0, 1, 3,
+            1, 3, 2
+        };
+        
+        std::shared_ptr<VertexBuffer> squareVB;
+        squareVB.reset(VertexBuffer::Create(verticesSqr, sizeof(verticesSqr)));
+        
+        const BufferLayout layoutSqr =
+        {
+            {ShaderDataType::Float3, "a_Position"}
+        };
+
+        squareVB->SetLayout(layout);
+        mSquareVertexArray->AddVertexBuffer(squareVB);
+
+        std::shared_ptr<IndexBuffer> squareIB;
+        squareIB.reset(IndexBuffer::Create(indicesSqr, sizeof(indicesSqr) / sizeof(uint32_t)));
+        mSquareVertexArray->SetIndexBuffer(squareIB);
+        
+        //------------------------------------------------------------------------------------
+        
+        shader.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/Basic.shader")));
+        shader->Bind();
+
+        shaderSqr.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/BlueShader.shader")));
+        shaderSqr->Bind();
 
         //After useProgram. We can get the shader variables and modify them in render loop.
-        int location = glGetUniformLocation(shader, "u_Color");
-        glUniform4f(location, 0.4f, 0.2f, 0.8f, 1.0f);
+        int location = shader->GetLocation("u_Color");
     }
 
     Application::~Application()
@@ -85,6 +120,18 @@ namespace Solar
             glClearColor(mRed, mGreen, mBlue, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            /*Renderer::BeginScene();
+            Renderer::SubmitGeometry();
+            Renderer::EndScene();*/
+
+            //For testing ----------------------------------------------------------------
+
+            shaderSqr->Bind();
+            mSquareVertexArray->Bind();
+            glDrawElements(GL_TRIANGLES, mSquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+            // ---------------------------------------------------------------------------
+
+            shader->Bind();
             mVertexArray->Bind();
             glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
