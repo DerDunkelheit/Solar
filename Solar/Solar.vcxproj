@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="source\Platform\OpenGl\OpenGLBuffer.h" />
     <ClInclude Include="source\Platform\OpenGl\OpenGLContext.h" />
+    <ClInclude Include="source\Platform\OpenGl\OpenGLRendererAPI.h" />
     <ClInclude Include="source\Platform\OpenGl\OpenGLVertexArray.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="source\Solar.h" />
@@ -163,9 +164,12 @@
     <ClInclude Include="source\Solar\PreSystems\FileReader.h" />
     <ClInclude Include="source\Solar\Renderer\Buffer.h" />
     <ClInclude Include="source\Solar\Renderer\GraphicsContext.h" />
+    <ClInclude Include="source\Solar\Renderer\RenderCommand.h" />
     <ClInclude Include="source\Solar\Renderer\Renderer.h" />
+    <ClInclude Include="source\Solar\Renderer\RendererAPI.h" />
     <ClInclude Include="source\Solar\Renderer\Shader.h" />
     <ClInclude Include="source\Solar\Renderer\Utils\ShaderUtils.h" />
+    <ClInclude Include="source\Solar\Renderer\VertexArray.h" />
     <ClInclude Include="source\Solar\Window.h" />
     <ClInclude Include="source\slpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -588,6 +592,7 @@
   <ItemGroup>
     <ClCompile Include="source\Platform\OpenGl\OpenGLBuffer.cpp" />
     <ClCompile Include="source\Platform\OpenGl\OpenGLContext.cpp" />
+    <ClCompile Include="source\Platform\OpenGl\OpenGLRendererAPI.cpp" />
     <ClCompile Include="source\Platform\OpenGl\OpenGLVertexArray.cpp" />
     <ClCompile Include="source\Platform\Windows\TestInput.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
@@ -603,7 +608,9 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="source\Solar\Renderer\Buffer.cpp" />
+    <ClCompile Include="source\Solar\Renderer\RenderCommand.cpp" />
     <ClCompile Include="source\Solar\Renderer\Renderer.cpp" />
+    <ClCompile Include="source\Solar\Renderer\RendererAPI.cpp" />
     <ClCompile Include="source\Solar\Renderer\Shader.cpp" />
     <ClCompile Include="source\Solar\Renderer\Utils\ShaderUtils.cpp" />
     <ClCompile Include="source\Solar\Renderer\VertexArray.cpp" />

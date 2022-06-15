@@ -11,8 +11,8 @@ namespace Solar
     {
         switch (Renderer::GetCurrentAPI())
         {
-            case RendererAPI::None:   SL_CORE_ASSERT(false);
-            case RendererAPI::OpenGL: return new OpenGLVertexArray();
+            case RendererAPI::API::None:   SL_CORE_ASSERT(false);
+            case RendererAPI::API::OpenGL: return new OpenGLVertexArray();
         }
 
         SL_CORE_ASSERT(false);

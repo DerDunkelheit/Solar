@@ -1,7 +1,5 @@
 #include "slpch.h"
 
-#include <glad/glad.h>
-
 #include "Application.h"
 #include "Window.h"
 #include "Layers/Layer.h"
@@ -9,6 +7,8 @@
 #include "Solar/Events/ImGuiEvents.h"
 #include "Solar/Events/ApplicationEvent.h"
 #include "Renderer/Utils/ShaderUtils.h"
+#include "Renderer/RenderCommand.h"
+#include "Renderer/Renderer.h"
 
 namespace Solar
 {
@@ -48,23 +48,23 @@ namespace Solar
             0, 1, 4
         };
 
-        mVertexArray.reset(VertexArray::Create());
-        std::shared_ptr<VertexBuffer> vertexBuffer;
-        std::shared_ptr<ElementBuffer> elementBuffer;
-        vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-        elementBuffer.reset(ElementBuffer::Create(indices, sizeof(indices)));
+        mVAO.reset(VertexArray::Create());
+        std::shared_ptr<VertexBuffer> VBO;
+        std::shared_ptr<ElementBuffer> EBO;
+        VBO.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+        EBO.reset(ElementBuffer::Create(indices, sizeof(indices)));
 
         const BufferLayout layout =
         {
             {ShaderDataType::Float3, "a_Position"}
         };
 
-        vertexBuffer->SetLayout(layout);
-        mVertexArray->AddVertexBuffer(vertexBuffer);
+        VBO->SetLayout(layout);
+        mVAO->AddVertexBuffer(VBO);
 
 
         // For testing -----------------------------------------------------------------------
-        mSquareVertexArray.reset(VertexArray::Create());
+        mVAO_sqr.reset(VertexArray::Create());
 
         float verticesSqr[] =
         {
@@ -82,31 +82,35 @@ namespace Solar
             1, 3, 2
         };
         
-        std::shared_ptr<VertexBuffer> squareVB;
-        squareVB.reset(VertexBuffer::Create(verticesSqr, sizeof(verticesSqr)));
+        std::shared_ptr<VertexBuffer> VBO_sqr;
+        VBO_sqr.reset(VertexBuffer::Create(verticesSqr, sizeof(verticesSqr)));
         
         const BufferLayout layoutSqr =
         {
             {ShaderDataType::Float3, "a_Position"}
         };
 
-        squareVB->SetLayout(layout);
-        mSquareVertexArray->AddVertexBuffer(squareVB);
+        VBO_sqr->SetLayout(layout);
+        mVAO_sqr->AddVertexBuffer(VBO_sqr);
 
         std::shared_ptr<IndexBuffer> squareIB;
         squareIB.reset(IndexBuffer::Create(indicesSqr, sizeof(indicesSqr) / sizeof(uint32_t)));
-        mSquareVertexArray->SetIndexBuffer(squareIB);
+        mVAO_sqr->SetIndexBuffer(squareIB);
         
         //------------------------------------------------------------------------------------
         
         shader.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/Basic.shader")));
         shader->Bind();
 
-        shaderSqr.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/BlueShader.shader")));
-        shaderSqr->Bind();
+        shader_sqr.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/BlueShader.shader")));
+        shader_sqr->Bind();
 
         //After useProgram. We can get the shader variables and modify them in render loop.
         int location = shader->GetLocation("u_Color");
+
+        mBackgroundColor.r = 0.09f;
+        mBackgroundColor.g = 0.09f;
+        mBackgroundColor.b = 0.09f;
     }
 
     Application::~Application()
@@ -117,23 +121,20 @@ namespace Solar
     {
         while (m_Running)
         {
-            glClearColor(mRed, mGreen, mBlue, 1);
-            glClear(GL_COLOR_BUFFER_BIT);
+            RenderCommand::SetClearColor(mBackgroundColor);
+            RenderCommand::Clear();
 
-            /*Renderer::BeginScene();
-            Renderer::SubmitGeometry();
-            Renderer::EndScene();*/
+            Renderer::BeginScene();
 
             //For testing ----------------------------------------------------------------
-
-            shaderSqr->Bind();
-            mSquareVertexArray->Bind();
-            glDrawElements(GL_TRIANGLES, mSquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+            shader_sqr->Bind();
+            Renderer::Submit(mVAO_sqr);
             // ---------------------------------------------------------------------------
 
             shader->Bind();
-            mVertexArray->Bind();
-            glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+            Renderer::SubmitElementBuffer(mVAO, 3);
+            
+            Renderer::EndScene();
 
             for (Layer* layer : mLayerStack)
             {
@@ -186,16 +187,15 @@ namespace Solar
 
     bool Application::OnWindowResized(WindowResizeEvent& event)
     {
-        glViewport(0, 0, event.GetWidth(), event.GetHeight());
+        RenderCommand::UpdateViewportSize(event.GetWidth(), event.GetHeight());
         return true;
     }
 
     bool Application::OnColorChanged(ColorChangedEvent& event)
     {
-        mRed = event.GetRedValue();
-        mGreen = event.GetGreenValue();
-        mBlue = event.GetBlueValue();
-
+        mBackgroundColor.r = event.GetRedValue();
+        mBackgroundColor.g = event.GetGreenValue();
+        mBackgroundColor.b = event.GetBlueValue();
 
         return true;
     }

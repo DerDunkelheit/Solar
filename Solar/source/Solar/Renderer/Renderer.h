@@ -1,18 +1,18 @@
 #pragma once
 
+#include "RendererAPI.h"
+
 namespace Solar
 {
-    enum class RendererAPI
-    {
-        //TODO: add directx 12 and vulkan support.
-        None = 0,
-        OpenGL = 1
-    };
-
     class Renderer
     {
     public:
-        static RendererAPI GetCurrentAPI() { return sRendererAPI; }
-        static RendererAPI sRendererAPI;
+        static RendererAPI::API GetCurrentAPI() { return RendererAPI::GetAPI(); }
+
+        static void BeginScene();
+        static void EndScene();
+        
+        static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+        static void SubmitElementBuffer(const std::shared_ptr<VertexArray>& vertexArray, uint32_t verticesCount);
     };
 }

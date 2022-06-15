@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glm/vec4.hpp>
+
 #include "Core.h"
 #include "Layers/LayerStack.h"
 #include "Solar/Layers/ImGui/ImGuiLayer.h"
@@ -47,17 +49,14 @@ namespace Solar
         LayerStack mLayerStack;
 
         //Rendering
-        std::shared_ptr<VertexArray> mVertexArray;
+        std::shared_ptr<VertexArray> mVAO;
         std::shared_ptr<Shader> shader;
 
         //for testing
-        std::shared_ptr<VertexArray> mSquareVertexArray;
-        std::shared_ptr<Shader> shaderSqr;
-
-        //TODO: create a proper container for this
-        float mRed = 0.09f;
-        float mGreen = 0.09f;
-        float mBlue = 0.09f;
+        std::shared_ptr<VertexArray> mVAO_sqr;
+        std::shared_ptr<Shader> shader_sqr;
+        
+        glm::vec4 mBackgroundColor;
     };
 
     // To be defined in CLIENT

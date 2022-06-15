@@ -10,10 +10,10 @@ namespace Solar
     {
         switch (Renderer::GetCurrentAPI())
         {
-        case RendererAPI::None:
+        case RendererAPI::API::None:
             break;
 
-        case RendererAPI::OpenGL:
+        case RendererAPI::API::OpenGL:
             return new OpenGLVertexBuffer(vertices, size);
             break;
         }
@@ -25,10 +25,10 @@ namespace Solar
     {
         switch (Renderer::GetCurrentAPI())
         {
-        case RendererAPI::None:
+        case RendererAPI::API::None:
             break;
 
-        case RendererAPI::OpenGL:
+        case RendererAPI::API::OpenGL:
             return new OpenGLIndexBuffer(indices, size);
             break;
         }
@@ -40,10 +40,10 @@ namespace Solar
     {
         switch (Renderer::GetCurrentAPI())
         {
-        case RendererAPI::None:
+        case RendererAPI::API::None:
             break;
 
-        case RendererAPI::OpenGL:
+        case RendererAPI::API::OpenGL:
             return new OpenGLElementBuffer(indices, size);
             break;
         }
