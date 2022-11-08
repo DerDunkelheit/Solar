@@ -604,9 +604,6 @@
     <ClCompile Include="source\Solar\Layers\LayerStack.cpp" />
     <ClCompile Include="source\Solar\Log.cpp" />
     <ClCompile Include="source\Solar\PreSystems\FileReader.cpp" />
-    <ClCompile Include="source\slpch.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="source\Solar\Renderer\Buffer.cpp" />
     <ClCompile Include="source\Solar\Renderer\RenderCommand.cpp" />
     <ClCompile Include="source\Solar\Renderer\Renderer.cpp" />
@@ -614,6 +611,9 @@
     <ClCompile Include="source\Solar\Renderer\Shader.cpp" />
     <ClCompile Include="source\Solar\Renderer\Utils\ShaderUtils.cpp" />
     <ClCompile Include="source\Solar\Renderer\VertexArray.cpp" />
+    <ClCompile Include="source\slpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="vendor\stb_image\std_image.cpp" />
   </ItemGroup>
   <ItemGroup>

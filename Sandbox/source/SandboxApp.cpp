@@ -26,6 +26,12 @@ public:
             ImGui::Text("Render from Sandbox layer");
             ImGui::End();
         }
+
+        if (Solar::Input::IsKeyPressed(290))
+        {
+            int a = 5;
+            std::cout << a << std::endl;
+        }
     }
 
     virtual void OnEvent(Solar::Event& event) override

@@ -105,12 +105,19 @@ namespace Solar
         shader_sqr.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/BlueShader.shader")));
         shader_sqr->Bind();
 
+        colorChangeShader.reset(new Shader(ShaderUtils::ParseShader("Resources/Shaders/ColorChange.shader")));
+        colorChangeShader->Bind();
+
         //After useProgram. We can get the shader variables and modify them in render loop.
         int location = shader->GetLocation("u_Color");
 
         mBackgroundColor.r = 0.09f;
         mBackgroundColor.g = 0.09f;
         mBackgroundColor.b = 0.09f;
+
+        mShaderColor.r = 0.3f;
+        mShaderColor.g = 0.04f;
+        mShaderColor.b = 0.04f;
     }
 
     Application::~Application()
@@ -127,7 +134,8 @@ namespace Solar
             Renderer::BeginScene();
 
             //For testing ----------------------------------------------------------------
-            shader_sqr->Bind();
+            colorChangeShader->Bind();
+            colorChangeShader->SetColor("ourColor", mShaderColor);
             Renderer::Submit(mVAO_sqr);
             // ---------------------------------------------------------------------------
 
@@ -159,7 +167,7 @@ namespace Solar
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
         dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(Application::OnWindowResized));
         dispatcher.Dispatch<ColorChangedEvent>(BIND_EVENT_FN(Application::OnColorChanged));
-        
+
         for (auto it = mLayerStack.end(); it != mLayerStack.begin();)
         {
             (*--it)->OnEvent(event);
@@ -193,9 +201,17 @@ namespace Solar
 
     bool Application::OnColorChanged(ColorChangedEvent& event)
     {
-        mBackgroundColor.r = event.GetRedValue();
-        mBackgroundColor.g = event.GetGreenValue();
-        mBackgroundColor.b = event.GetBlueValue();
+        if(event.GetPropertyName().has_value())
+        {
+            if (event.GetPropertyName().value() == "shaderColor")
+            {
+                mShaderColor = event.GetColor();
+            }
+        }
+        else
+        {
+            mBackgroundColor = event.GetColor();
+        }
 
         return true;
     }

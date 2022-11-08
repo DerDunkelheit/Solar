@@ -55,8 +55,10 @@ namespace Solar
         //for testing
         std::shared_ptr<VertexArray> mVAO_sqr;
         std::shared_ptr<Shader> shader_sqr;
+        std::shared_ptr<Shader> colorChangeShader;
         
         glm::vec4 mBackgroundColor;
+        glm::vec4 mShaderColor;
     };
 
     // To be defined in CLIENT

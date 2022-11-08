@@ -7,6 +7,9 @@
     <Filter Include="source\Platform">
       <UniqueIdentifier>{8A00977C-F68B-0441-FF9C-87356BA76041}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\Platform\OpenGl">
+      <UniqueIdentifier>{9E6A90CA-8A64-B91C-73D1-4F2D5F6A1F89}</UniqueIdentifier>
+    </Filter>
     <Filter Include="source\Platform\Windows">
       <UniqueIdentifier>{C494B974-30CC-010C-39D6-652FA58C2805}</UniqueIdentifier>
     </Filter>
@@ -24,6 +27,12 @@
     </Filter>
     <Filter Include="source\Solar\PreSystems">
       <UniqueIdentifier>{34A7D5A3-A0DE-1D3B-A9E8-815E159F4434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Solar\Renderer">
+      <UniqueIdentifier>{2C8065CE-98EC-20C9-61E0-B826CD0B4331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Solar\Renderer\Utils">
+      <UniqueIdentifier>{8CF26D13-F8FF-9BF9-81E6-97E4EDF267B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -51,6 +60,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGl\OpenGLBuffer.h">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGl\OpenGLContext.h">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGl\OpenGLRendererAPI.h">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGl\OpenGLVertexArray.h">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h">
       <Filter>source\Platform\Windows</Filter>
     </ClInclude>
@@ -70,6 +91,9 @@
       <Filter>source\Solar\Events</Filter>
     </ClInclude>
     <ClInclude Include="source\Solar\Events\Event.h">
+      <Filter>source\Solar\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Events\ImGuiEvents.h">
       <Filter>source\Solar\Events</Filter>
     </ClInclude>
     <ClInclude Include="source\Solar\Events\KeyEvent.h">
@@ -101,6 +125,30 @@
     </ClInclude>
     <ClInclude Include="source\Solar\PreSystems\FileReader.h">
       <Filter>source\Solar\PreSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\Buffer.h">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\GraphicsContext.h">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\RenderCommand.h">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\Renderer.h">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\RendererAPI.h">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\Shader.h">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\Utils\ShaderUtils.h">
+      <Filter>source\Solar\Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Solar\Renderer\VertexArray.h">
+      <Filter>source\Solar\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="source\Solar\Window.h">
       <Filter>source\Solar</Filter>
@@ -1356,16 +1404,20 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="source\Solar\Renderer\GraphicsContext.h" />
-    <ClInclude Include="source\Platform\OpenGl\OpenGLContext.h" />
-    <ClInclude Include="source\Solar\Events\ImGuiEvents.h" />
-    <ClInclude Include="source\Solar\Renderer\Shader.h" />
-    <ClInclude Include="source\Solar\Renderer\Utils\ShaderUtils.h" />
-    <ClInclude Include="source\Solar\Renderer\Buffer.h" />
-    <ClInclude Include="source\Platform\OpenGl\OpenGLBuffer.h" />
-    <ClInclude Include="source\Solar\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGl\OpenGLBuffer.cpp">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGl\OpenGLContext.cpp">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGl\OpenGLRendererAPI.cpp">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGl\OpenGLVertexArray.cpp">
+      <Filter>source\Platform\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="source\Platform\Windows\TestInput.cpp">
       <Filter>source\Platform\Windows</Filter>
     </ClCompile>
@@ -1396,17 +1448,32 @@
     <ClCompile Include="source\Solar\PreSystems\FileReader.cpp">
       <Filter>source\Solar\PreSystems</Filter>
     </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\Buffer.cpp">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\RenderCommand.cpp">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\Renderer.cpp">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\RendererAPI.cpp">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\Shader.cpp">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\Utils\ShaderUtils.cpp">
+      <Filter>source\Solar\Renderer\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Solar\Renderer\VertexArray.cpp">
+      <Filter>source\Solar\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="source\slpch.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\std_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="source\Platform\OpenGl\OpenGLContext.cpp" />
-    <ClCompile Include="source\Solar\Renderer\Shader.cpp" />
-    <ClCompile Include="source\Solar\Renderer\Utils\ShaderUtils.cpp" />
-    <ClCompile Include="source\Solar\Renderer\Buffer.cpp" />
-    <ClCompile Include="source\Platform\OpenGl\OpenGLBuffer.cpp" />
-    <ClCompile Include="source\Solar\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

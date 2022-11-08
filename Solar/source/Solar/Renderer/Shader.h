@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glm/vec4.hpp>
+
 namespace Solar
 {
     struct ShaderData
@@ -18,6 +20,7 @@ namespace Solar
         void UnBind() const;
         void setFloat(const std::string& name, float value) const;
         void SetInt(const std::string& name, int value) const;
+        void SetColor(const std::string& name, glm::vec4 color) const;
 
         int GetLocation(const char* variableName) const;
 

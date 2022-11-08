@@ -32,6 +32,12 @@ namespace Solar
 		glUniform1i(glGetUniformLocation(mRendererId, name.c_str()), value);
 	}
 
+	void Shader::SetColor(const std::string& name, glm::vec4 color) const
+	{
+		auto test = glGetUniformLocation(mRendererId, name.c_str());
+		glUniform4f(glGetUniformLocation(mRendererId, name.c_str()), color.r, color.g, color.b, 1.0f);
+	}
+
 	int Shader::GetLocation(const char* variableName) const
 	{
 		//TODO: assert for invalid location.

@@ -3,13 +3,13 @@
 #include <imgui.h>
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_glfw.h>
-#include <glad/glad.h>
+#include <glm/vec4.hpp>
 #include <GLFW/glfw3.h>
 
 #include "ImGuiLayer.h"
 #include "Solar/Application.h"
 #include "Solar/Window.h"
-#include "Platform/Windows/WindowsWindow.h"
+
 #include "Solar/Events/ImGuiEvents.h"
 
 namespace Solar
@@ -79,7 +79,24 @@ namespace Solar
         {
             if (mEventCallback != nullptr)
             {
-                ColorChangedEvent event(col1[0], col1[1], col1[2]);
+                glm::vec4 color;
+                color.r = col1[0];
+                color.g = col1[1];
+                color.b = col1[2];
+                ColorChangedEvent event(color);
+                mEventCallback(event);
+            }
+        }
+        static float shaderColors[3] = { 0.09f, 0.09f, 0.09f };
+        if (ImGui::ColorEdit3("shaderColor", shaderColors))
+        {
+            if (mEventCallback != nullptr)
+            {
+                glm::vec4 color;
+                color.r = shaderColors[0];
+                color.g = shaderColors[1];
+                color.b = shaderColors[2];
+                ColorChangedEvent event(color, "shaderColor");
                 mEventCallback(event);
             }
         }
